@@ -32,4 +32,12 @@ btn.addEventListener("click", async ()=> {
     humidity.innerText = res.data.main.humidity;
     speed.innerText = res.data.wind.speed;
     inp.innerText = "";
-})
+    setBack(temp);
+});
+let back = document.querySelector(".wheater-icon");
+function setBack(temp) {
+    if(temp<20) {
+        back.src = "snow.png";
+    }
+}
+

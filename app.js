@@ -26,18 +26,30 @@ btn.addEventListener("click", async ()=> {
     let temp = document.querySelector(".temp");
     let humidity = document.querySelector(".humidity");
     let speed = document.querySelector(".wind");
-
+    let tempForFunc = res.data.main.temp;
+    let humiForFunc = res.data.main.humidity;;
     let t = `${res.data.main.temp}°C`
     temp.innerHTML = t;
     humidity.innerText = res.data.main.humidity;
     speed.innerText = res.data.wind.speed;
     inp.innerText = "";
-    setBack(temp);
+    setBack(tempForFunc, humiForFunc );
 });
 let back = document.querySelector(".wheater-icon");
-function setBack(temp) {
+function setBack(temp,humidity) {
     if(temp<20) {
         back.src = "snow.png";
+    } else if(temp>=20 &&temp <=40) {
+        back.src = "clear.png";
+    }
+
+    if(humidity > 60 && humidity < 70) {
+        back.src = "mist.png";
+    } else if(humidity >= 70 && humidity < 85) {
+        back.src = "drizzle.png";
+    }  else {
+        console.log(`else humidity is ${humidity}`);
+        back.src = "rain.png";
     }
 }
 
